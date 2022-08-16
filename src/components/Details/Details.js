@@ -1,14 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Details.css'
+import {useParams} from 'react-router-dom'
 
 
-export default function Details({ data }) {
+export default function Details() {
   const [info, setInfo] = useState([])
+
+const {empFN}=useParams();
+
+useEffect(() => {
+  fetchInfo();
+}, []);
 
   const fetchInfo = () => {
 
-    axios.get("https://opensheet.elk.sh/1gH5Kle-styszcHF2G0H8l1w1nDt1RhO9NHNCpHhKK0M/alex")
+    axios.get(`https://opensheet.elk.sh/1gH5Kle-styszcHF2G0H8l1w1nDt1RhO9NHNCpHhKK0M/${empFN}`)
       .then((response) => {
         const employeesData = response.data[0];
         console.log(employeesData);
@@ -19,13 +27,12 @@ export default function Details({ data }) {
 
   }
 
-  useEffect(() => {
-    fetchInfo();
-  }, []);
 
   return (<>
     <div className='details-heading'>
-      Details of {info.first_name} {info.last_name}
+      <h4>
+        Details of {info.first_name} {info.last_name}
+      </h4>
     </div>
 
     <div className='info'>

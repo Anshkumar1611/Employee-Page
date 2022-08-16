@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 import axios from 'axios';
 import './App.css';
-import ResponsiveAppBar from './components/Navbar';
-import Table from './components/Table';
+import ResponsiveAppBar from './components/Header/Navbar';
+import NewTable from './components/Table/NewTable'
 import Details from './components/Details/Details'
 function App() {
   const [data, setData] = useState([]);
@@ -30,8 +29,8 @@ function App() {
       <ResponsiveAppBar />
       <Router>
         <Routes>
-          <Route path='/' element={<Table data={data} />} />
-          <Route path='/' element={<Details data={data}/>} />
+          <Route path='/' element={<NewTable data={data} />} />
+          <Route path='/employee/:empFN' element={<Details data={data}/>} />
         </Routes>
       </Router>
     </>
