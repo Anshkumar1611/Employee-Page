@@ -7,7 +7,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { TextField } from '@mui/material';
-import "./NewTable.css";
 import { Link } from 'react-router-dom'
 
 function createData(id, first_name, last_name, date_of_birth, address, date_of_joining, salary, designation) {
@@ -29,7 +28,7 @@ export default function NewTable({ data }) {
 
         <TextField id="standard-basic" label="Search here" variant="standard" style={{ display: 'flex', margin: "1rem" }} onChange={(e) => setSearchTerm(e.target.value)} />
 
-        <div className='table-container'>
+        <div style={{margin: '1.5rem' }}>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
