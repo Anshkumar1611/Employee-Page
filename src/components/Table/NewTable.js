@@ -28,7 +28,7 @@ export default function NewTable({ data }) {
 
         <TextField id="standard-basic" label="Search here" variant="standard" style={{ display: 'flex', margin: "1rem" }} onChange={(e) => setSearchTerm(e.target.value)} />
 
-        <div style={{ margin: '1.5rem' }}>
+        <div style={{margin: '1.5rem' }}>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
@@ -44,7 +44,7 @@ export default function NewTable({ data }) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                       
+                        {/*  eslint-disable-next-line array-callback-return */} 
                         {rows.filter((val) => {
                             if (searchTerm === "") {
                                 return val;
@@ -53,10 +53,8 @@ export default function NewTable({ data }) {
                                 val.date_of_birth.toLowerCase().includes(searchTerm.toLowerCase()) ||
                                 val.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                                 val.last_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                val.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                 val.salary.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                                 val.designation.toLowerCase().includes(searchTerm.toLowerCase())) { return val; }
-                            }).map((row) => (
+                                val.address.toLowerCase().includes(searchTerm.toLowerCase()) || val.salary.toLowerCase().includes(searchTerm.toLowerCase()) || val.designation.toLowerCase().includes(searchTerm.toLowerCase())) { return val; }              
+                        }).map((row) => (
 
                             <TableRow key={row.id}>
                                 <TableCell style={{ color: "#000000", fontWeight: 'bold', fontFamily: 'sans-serif' }} component={Link} to={`/employee/${row.first_name.toLowerCase()}`} scope="row">
